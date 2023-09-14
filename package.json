@@ -1,0 +1,48 @@
+{
+  "name": "nuxt-ntf-blog",
+  "version": "2.1.4",
+  "description": "Nuxt-Tailwind-NetlifyCMS",
+  "author": "Shady Tawfik",
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ModernAmusements/nuxt-ntf-blog.git#readme"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.1.1",
+    "@nuxt/content": "^1.15.1",
+    "@nuxtjs/i18n": "^7.2.2",
+    "@popperjs/core": "^2.11.5",
+    "atropos": "^1.0.2",
+    "boxicons": "^2.1.2",
+    "nuxt": "^2.15.8",
+    "vue-intersection-observer": "^0.1.9"
+  },
+  "devDependencies": {
+    "@nuxtjs/color-mode": "^2.1.1",
+    "@nuxtjs/pwa": "^3.3.5",
+    "@nuxtjs/svg": "^0.4.0",
+    "@nuxtjs/tailwindcss": "^4.2.1",
+    "eslint": "^8.14.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "netlify-cli": "^10.1.0",
+    "nuxt-purgecss": "^1.0.0",
+    "postcss": "^8.4.13",
+    "postcss-easing-gradients": "^3.0.1",
+    "postcss-preset-env": "^7.4.4",
+    "prettier": "^2.6.2",
+    "vue-content-placeholders": "^0.2.1"
+  },
+  "bugs": {
+    "url": "https://github.com/ModernAmusements/nuxt-ntf-blog.git/issues"
+  },
+  "homepage": "https://github.com/ModernAmusements/nuxt-ntf-blog.git/tree/readme#readme",
+  "main": "nuxt.config.js"
+}

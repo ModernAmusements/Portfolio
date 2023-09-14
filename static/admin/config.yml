@@ -1,0 +1,110 @@
+site_url: https://shady-blog.netlify.app/
+logo_url: https://shady-blog.netlify.app/small-logo-mark-ma.svg
+
+publish_mode: editorial_workflow
+backend:
+  name: git-gateway
+  branch: main
+  squash_merges: true
+
+local_backend: true
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - label: 'Site Settings'
+    name: 'site'
+    files:
+      - label: 'Info'
+        name: 'info'
+        file: 'content/site/info.json'
+        format: 'json'
+        editor:
+          preview: false
+        fields:
+          - { label: Site Name, name: sitename, widget: string, hint: 'This is used for the site title' }
+          - {
+              label: Site Description,
+              name: sitedescription,
+              widget: string,
+              hint: 'This is used as descriptive text for links that link to this site',
+            }
+          - {
+              label: Site Language,
+              name: sitelang,
+              widget: string,
+              pattern: ['^[a-z]{2}([-])?([A-Za-z]{2})?$', 'Must match "xx" or "xx-XX" syntax (ex. "en" or "sv-SE")'],
+            }
+          - { label: Site Email, name: siteemail, widget: string, required: false }
+          - label: 'Capabilities'
+            name: 'capabilities'
+            widget: 'select'
+            multiple: true
+            options: ['Design', 'UX', 'Dev']
+            default: ['Design']
+
+  - name: 'blog'
+    label: 'Blog'
+    folder: 'content/blog'
+    create: true
+    format: 'frontmatter'
+    slug: '{{slug}}'
+    fields:
+      - { label: 'Created Date', name: 'createdAt', widget: 'datetime', date_format: 'YYYY-MM-DD', time_format: false }
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Description', name: 'description', widget: 'string', required: false }
+      - { label: 'Body', name: 'body', widget: 'markdown', required: false }
+      - { label: 'Color', name: 'color', widget: 'color', enableAlpha: true, allowInput: true }
+      - {
+          label: 'Media Uploader',
+          name: 'media_uploader',
+          widget: 'file',
+          default: '/uploads/general-manual.pdf',
+          config: multiple true,
+          hint: 'all filetypes are allowed',
+        }
+      - {
+          label: 'Testimonials',
+          name: 'testimonials',
+          widget: 'list',
+          summary: '{{fields.quote}} - {{fields.author.name}}',
+          fields:
+            [
+              { label: Quote, name: quote, widget: string, default: 'Everything is awesome!' },
+              { label: Image, name: image, widget: image },
+            ],
+        }
+  - name: 'projects'
+    label: 'Projects'
+    label_singular: 'Project'
+    folder: 'content/projects'
+    create: true
+    format: 'frontmatter'
+    slug: '{{slug}}'
+    preview_path: 'projects/{{slug}}'
+    fields:
+      - {
+          label: 'Project Category',
+          name: 'category',
+          widget: 'select',
+          default: 'JavaScript',
+          options:
+            [
+              { label: 'VueJS', value: 'vuejs' },
+              { label: 'CSS3', value: 'css3' },
+              { label: 'jQuery', value: 'jquery' },
+            ],
+        }
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Description', name: 'description', widget: 'string', required: false }
+      - { label: 'Cover Image', name: 'cover', widget: 'image', required: false, allow_multiple: false }
+      - { label: 'Content', name: 'body', widget: 'markdown', required: false }
+      - {
+          label: 'Gallery',
+          name: 'gallery',
+          widget: 'list',
+          required: false,
+          summary: '{{fields.image}}',
+          field: { label: 'Image', name: 'image', widget: 'image' },
+        }
